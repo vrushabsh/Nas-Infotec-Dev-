@@ -120,6 +120,43 @@ body {
   animation-play-state: paused;
 }
 
+/* Infinite Vertical Marquee Animation */
+@keyframes marqueeVertical {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes marqueeVerticalReverse {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+.animate-marquee-vertical {
+  animation: marqueeVertical 32s linear infinite;
+}
+
+.animate-marquee-vertical-slow {
+  animation: marqueeVertical 44s linear infinite;
+}
+
+.animate-marquee-vertical-reverse {
+  animation: marqueeVerticalReverse 36s linear infinite;
+}
+
+.animate-marquee-vertical:hover,
+.animate-marquee-vertical-slow:hover,
+.animate-marquee-vertical-reverse:hover {
+  animation-play-state: paused;
+}
+
 
 /* Section Entry Animations */
 @keyframes sectionEntry {

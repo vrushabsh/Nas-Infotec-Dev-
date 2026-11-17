@@ -147,7 +147,7 @@ export const Hero: React.FC<HeroProps> = () => {
 
       {/* Bottom Client Logos Strip ("TRUSTED BY GLOBAL BRANDS") */}
       <div className="max-w-[1340px] mx-auto px-4 sm:px-6 md:px-8 mt-2 sm:mt-4">
-        <div className="rounded-2xl sm:rounded-full bg-white/90 backdrop-blur-md py-4 sm:py-5 px-6 sm:px-10 border border-neutral-200/80 shadow-[0_4px_25px_rgba(0,0,0,0.03)] flex flex-wrap items-center justify-between gap-6 sm:gap-8">
+        <div className="rounded-2xl sm:rounded-full bg-white/90 backdrop-blur-md py-4 sm:py-5 px-6 sm:px-10 border border-neutral-200/80 shadow-[0_4px_25px_rgba(0,0,0,0.03)] flex items-center justify-between gap-6 sm:gap-8 overflow-hidden">
           {/* Left Label */}
           <div className="flex items-center gap-4 shrink-0">
             <div className="flex flex-col leading-none">
@@ -161,65 +161,131 @@ export const Hero: React.FC<HeroProps> = () => {
             <div className="h-7 w-px bg-neutral-200 hidden sm:block" />
           </div>
 
-          {/* 7 Global Client Logos */}
-          <div className="flex flex-wrap items-center justify-between flex-1 gap-6 sm:gap-8 min-w-[280px]">
-            {/* Coca-Cola */}
-            <div className="flex items-center justify-center h-6 opacity-85 hover:opacity-100 transition-opacity" title="Coca-Cola">
-              <svg width="84" height="26" viewBox="0 0 110 32" fill="#0e1b13">
-                <text x="0" y="24" fontFamily="'Brush Script MT', 'Snell Roundhand', cursive" fontSize="26" fontStyle="italic" fontWeight="bold">Coca-Cola</text>
-              </svg>
-            </div>
+          {/* Infinite Scrolling Client Logos Strip */}
+          <div className="overflow-hidden relative flex-1 min-w-0 [mask-image:linear-gradient(to_right,transparent,black_24px,black_calc(100%-24px),transparent)]">
+            <div className="animate-marquee flex items-center">
+              <div className="flex items-center gap-8 sm:gap-12 pr-8 sm:pr-12 shrink-0">
+                {/* Coca-Cola */}
+                <div className="flex items-center justify-center h-6 opacity-85 hover:opacity-100 transition-opacity shrink-0" title="Coca-Cola">
+                  <svg width="84" height="26" viewBox="0 0 110 32" fill="#0e1b13">
+                    <text x="0" y="24" fontFamily="'Brush Script MT', 'Snell Roundhand', cursive" fontSize="26" fontStyle="italic" fontWeight="bold">Coca-Cola</text>
+                  </svg>
+                </div>
 
-            {/* Disney+ */}
-            <div className="flex items-center justify-center h-6 opacity-85 hover:opacity-100 transition-opacity" title="Disney+">
-              <span className="font-black text-lg sm:text-xl tracking-tight text-[#0e1b13] flex items-center">
-                <span style={{ fontFamily: "'Trebuchet MS', sans-serif" }} className="italic font-extrabold tracking-tighter">Disney</span>
-                <span className="text-[#0f7b44] font-black text-xl ml-0.5">+</span>
-              </span>
-            </div>
+                {/* Disney+ */}
+                <div className="flex items-center justify-center h-6 opacity-85 hover:opacity-100 transition-opacity shrink-0" title="Disney+">
+                  <span className="font-black text-lg sm:text-xl tracking-tight text-[#0e1b13] flex items-center">
+                    <span style={{ fontFamily: "'Trebuchet MS', sans-serif" }} className="italic font-extrabold tracking-tighter">Disney</span>
+                    <span className="text-[#0f7b44] font-black text-xl ml-0.5">+</span>
+                  </span>
+                </div>
 
-            {/* PayPal */}
-            <div className="flex items-center justify-center h-6 opacity-85 hover:opacity-100 transition-opacity gap-1.5" title="PayPal">
-              <svg width="18" height="20" viewBox="0 0 24 24" fill="none">
-                <path d="M7 21L9.2 6.5H16C19 6.5 21 8.5 20.2 11.5C19.5 14.5 17 16 14.2 16H11L9.6 21H7Z" fill="#003087" />
-                <path d="M10 18L11.8 7.5H17.5C19.8 7.5 21.5 9 20.8 11.5C20.2 14 18.2 15.2 16 15.2H13.2L12 18H10Z" fill="#0079C1" opacity="0.85" />
-              </svg>
-              <span className="font-extrabold text-base tracking-tight text-[#0e1b13]">
-                PayPal
-              </span>
-            </div>
+                {/* PayPal */}
+                <div className="flex items-center justify-center h-6 opacity-85 hover:opacity-100 transition-opacity gap-1.5 shrink-0" title="PayPal">
+                  <svg width="18" height="20" viewBox="0 0 24 24" fill="none">
+                    <path d="M7 21L9.2 6.5H16C19 6.5 21 8.5 20.2 11.5C19.5 14.5 17 16 14.2 16H11L9.6 21H7Z" fill="#003087" />
+                    <path d="M10 18L11.8 7.5H17.5C19.8 7.5 21.5 9 20.8 11.5C20.2 14 18.2 15.2 16 15.2H13.2L12 18H10Z" fill="#0079C1" opacity="0.85" />
+                  </svg>
+                  <span className="font-extrabold text-base tracking-tight text-[#0e1b13]">
+                    PayPal
+                  </span>
+                </div>
 
-            {/* PHILIPS */}
-            <div className="flex items-center justify-center h-6 opacity-85 hover:opacity-100 transition-opacity" title="PHILIPS">
-              <span className="font-black text-sm sm:text-base tracking-[0.2em] text-[#0e1b13]">
-                PHILIPS
-              </span>
-            </div>
+                {/* PHILIPS */}
+                <div className="flex items-center justify-center h-6 opacity-85 hover:opacity-100 transition-opacity shrink-0" title="PHILIPS">
+                  <span className="font-black text-sm sm:text-base tracking-[0.2em] text-[#0e1b13]">
+                    PHILIPS
+                  </span>
+                </div>
 
-            {/* accenture */}
-            <div className="flex items-center justify-center h-6 opacity-85 hover:opacity-100 transition-opacity gap-0.5" title="accenture">
-              <span className="font-extrabold text-sm sm:text-base tracking-tight text-[#0e1b13] lowercase">
-                accenture
-              </span>
-              <span className="text-[#0f7b44] font-black text-sm -translate-y-1">&gt;</span>
-            </div>
+                {/* accenture */}
+                <div className="flex items-center justify-center h-6 opacity-85 hover:opacity-100 transition-opacity gap-0.5 shrink-0" title="accenture">
+                  <span className="font-extrabold text-sm sm:text-base tracking-tight text-[#0e1b13] lowercase">
+                    accenture
+                  </span>
+                  <span className="text-[#0f7b44] font-black text-sm -translate-y-1">&gt;</span>
+                </div>
 
-            {/* Hisense */}
-            <div className="flex items-center justify-center h-6 opacity-85 hover:opacity-100 transition-opacity" title="Hisense">
-              <span className="font-bold text-sm sm:text-base tracking-tight text-[#0e1b13]">
-                H<span className="text-[#10b981]">i</span>sense
-              </span>
-            </div>
+                {/* Hisense */}
+                <div className="flex items-center justify-center h-6 opacity-85 hover:opacity-100 transition-opacity shrink-0" title="Hisense">
+                  <span className="font-bold text-sm sm:text-base tracking-tight text-[#0e1b13]">
+                    H<span className="text-[#10b981]">i</span>sense
+                  </span>
+                </div>
 
-            {/* natura */}
-            <div className="flex items-center justify-center h-6 opacity-85 hover:opacity-100 transition-opacity gap-1" title="natura">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="#0f7b44">
-                <circle cx="12" cy="12" r="5" />
-                <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8z" opacity="0.4" />
-              </svg>
-              <span className="font-bold text-sm sm:text-base tracking-tight text-[#0e1b13] lowercase">
-                natura
-              </span>
+                {/* natura */}
+                <div className="flex items-center justify-center h-6 opacity-85 hover:opacity-100 transition-opacity gap-1 shrink-0" title="natura">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="#0f7b44">
+                    <circle cx="12" cy="12" r="5" />
+                    <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8z" opacity="0.4" />
+                  </svg>
+                  <span className="font-bold text-sm sm:text-base tracking-tight text-[#0e1b13] lowercase">
+                    natura
+                  </span>
+                </div>
+              </div>
+
+              {/* Duplicate track for seamless infinite scrolling loop */}
+              <div className="flex items-center gap-8 sm:gap-12 pr-8 sm:pr-12 shrink-0" aria-hidden="true">
+                {/* Coca-Cola */}
+                <div className="flex items-center justify-center h-6 opacity-85 hover:opacity-100 transition-opacity shrink-0" title="Coca-Cola">
+                  <svg width="84" height="26" viewBox="0 0 110 32" fill="#0e1b13">
+                    <text x="0" y="24" fontFamily="'Brush Script MT', 'Snell Roundhand', cursive" fontSize="26" fontStyle="italic" fontWeight="bold">Coca-Cola</text>
+                  </svg>
+                </div>
+
+                {/* Disney+ */}
+                <div className="flex items-center justify-center h-6 opacity-85 hover:opacity-100 transition-opacity shrink-0" title="Disney+">
+                  <span className="font-black text-lg sm:text-xl tracking-tight text-[#0e1b13] flex items-center">
+                    <span style={{ fontFamily: "'Trebuchet MS', sans-serif" }} className="italic font-extrabold tracking-tighter">Disney</span>
+                    <span className="text-[#0f7b44] font-black text-xl ml-0.5">+</span>
+                  </span>
+                </div>
+
+                {/* PayPal */}
+                <div className="flex items-center justify-center h-6 opacity-85 hover:opacity-100 transition-opacity gap-1.5 shrink-0" title="PayPal">
+                  <svg width="18" height="20" viewBox="0 0 24 24" fill="none">
+                    <path d="M7 21L9.2 6.5H16C19 6.5 21 8.5 20.2 11.5C19.5 14.5 17 16 14.2 16H11L9.6 21H7Z" fill="#003087" />
+                    <path d="M10 18L11.8 7.5H17.5C19.8 7.5 21.5 9 20.8 11.5C20.2 14 18.2 15.2 16 15.2H13.2L12 18H10Z" fill="#0079C1" opacity="0.85" />
+                  </svg>
+                  <span className="font-extrabold text-base tracking-tight text-[#0e1b13]">
+                    PayPal
+                  </span>
+                </div>
+
+                {/* PHILIPS */}
+                <div className="flex items-center justify-center h-6 opacity-85 hover:opacity-100 transition-opacity shrink-0" title="PHILIPS">
+                  <span className="font-black text-sm sm:text-base tracking-[0.2em] text-[#0e1b13]">
+                    PHILIPS
+                  </span>
+                </div>
+
+                {/* accenture */}
+                <div className="flex items-center justify-center h-6 opacity-85 hover:opacity-100 transition-opacity gap-0.5 shrink-0" title="accenture">
+                  <span className="font-extrabold text-sm sm:text-base tracking-tight text-[#0e1b13] lowercase">
+                    accenture
+                  </span>
+                  <span className="text-[#0f7b44] font-black text-sm -translate-y-1">&gt;</span>
+                </div>
+
+                {/* Hisense */}
+                <div className="flex items-center justify-center h-6 opacity-85 hover:opacity-100 transition-opacity shrink-0" title="Hisense">
+                  <span className="font-bold text-sm sm:text-base tracking-tight text-[#0e1b13]">
+                    H<span className="text-[#10b981]">i</span>sense
+                  </span>
+                </div>
+
+                {/* natura */}
+                <div className="flex items-center justify-center h-6 opacity-85 hover:opacity-100 transition-opacity gap-1 shrink-0" title="natura">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="#0f7b44">
+                    <circle cx="12" cy="12" r="5" />
+                    <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8z" opacity="0.4" />
+                  </svg>
+                  <span className="font-bold text-sm sm:text-base tracking-tight text-[#0e1b13] lowercase">
+                    natura
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </div>

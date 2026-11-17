@@ -405,10 +405,6 @@ export default function AboutPage() {
             <span className="text-2xl font-black ml-1">▶</span>
           </Link>
 
-          <span className="text-xs font-mono uppercase tracking-widest text-[#FFB057] font-bold">
-            Watch Our Video
-          </span>
-
           <h2 className="text-3xl sm:text-5xl font-black text-white leading-tight">
             Watch our journey and story
           </h2>
@@ -438,53 +434,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ================= 6. CORE FEATURE SECTION (24/7 SUPPORT) ================= */}
-      <section className="relative overflow-hidden bg-[#0a1b10] py-20 sm:py-28 text-white border-b border-white/10">
-        <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[#FFB057]/10 blur-[130px] rounded-full pointer-events-none" />
-
-        <Container>
-          <div className="flex flex-col items-center text-center max-w-3xl mx-auto space-y-4 mb-14">
-            <h2 className="text-3xl sm:text-5xl font-black leading-tight text-white">
-              Powerful feature <span className="text-[#FFB057]">built for you</span>
-            </h2>
-
-            <p className="text-sm sm:text-base text-gray-300 leading-relaxed font-medium">
-              Our platform is designed with powerful, user-focused features that make your experience smooth, efficient, and reliable.
-            </p>
-          </div>
-
-          <div className="max-w-xl mx-auto bg-white/10 backdrop-blur-xl border border-white/15 rounded-3xl overflow-hidden shadow-2xl">
-            <div className="h-56 relative w-full bg-neutral-800">
-              <Image
-                src="https://images.unsplash.com/photo-1556740749-887f6717d7e4?q=80&w=1200&auto=format&fit=crop"
-                alt="24/7 Dedicated Support"
-                fill
-                className="object-cover"
-              />
-            </div>
-
-            <div className="p-8 text-center space-y-4">
-              <div className="w-14 h-14 mx-auto rounded-full bg-[#FFB057] text-[#0a1118] flex items-center justify-center font-bold text-2xl shadow-lg">
-                🎧
-              </div>
-
-              <h3 className="text-2xl font-bold text-white">24/7 Support</h3>
-
-              <p className="text-gray-300 text-sm leading-relaxed font-medium">
-                Our dedicated support available 24/7 to assist.
-              </p>
-
-              <p className="text-sm font-semibold text-[#FFB057] italic pt-2 border-t border-white/10">
-                “Securing your enterprise, every single day.”
-              </p>
-
-              <span className="inline-block text-xs font-mono text-emerald-400 font-bold uppercase tracking-wider">
-                Architectural &amp; Comprehensive
-              </span>
-            </div>
-          </div>
-        </Container>
-      </section>
 
       {/* ================= 7. TESTIMONIALS SECTION ================= */}
       <AboutTestimonials testimonials={testimonials} />

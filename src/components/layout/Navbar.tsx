@@ -1,10 +1,9 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import PillNav, { PillNavItem } from "@/components/ui/PillNav";
 import { HEADER_NAV_ITEMS } from "@/constants/navigation";
 import { ROUTES } from "@/constants/routes";
 
@@ -14,48 +13,50 @@ interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [currentHash, setCurrentHash] = useState("#top");
   const pathname = usePathname();
 
-  const navItems: PillNavItem[] = HEADER_NAV_ITEMS;
+  const [prevPathname, setPrevPathname] = useState(pathname);
+  const [activeHref, setActiveHref] = useState(pathname || "/");
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    const handleHashChange = () => {
-      if (typeof window !== "undefined" && window.location.hash) {
-        setCurrentHash(window.location.hash);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    window.addEventListener("hashchange", handleHashChange);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("hashchange", handleHashChange);
-    };
-  }, []);
-
-  // Determine active href based on current pathname and hash
-  let activeHref = pathname || "/";
-  if (pathname === "/" && currentHash && currentHash !== "#top") {
-    activeHref = `/${currentHash}`;
+  // Adjust state during render when route changes without useEffect
+  if (prevPathname !== pathname) {
+    setPrevPathname(pathname);
+    setActiveHref(pathname || "/");
   }
 
+  // Determine the single active tab strictly
+  const getActiveHref = () => {
+    if (pathname === "/services" || pathname?.startsWith("/services/")) {
+      return ROUTES.SERVICES;
+    }
+    if (pathname === "/industries" || pathname?.startsWith("/industries/")) {
+      return ROUTES.INDUSTRIES;
+    }
+    if (pathname === "/about" || pathname?.startsWith("/about/")) {
+      return ROUTES.ABOUT;
+    }
+    if (pathname === "/careers" || pathname?.startsWith("/careers/")) {
+      return ROUTES.CAREERS;
+    }
+    if (activeHref === ROUTES.CAREERS) {
+      return ROUTES.CAREERS;
+    }
+    if (pathname === ROUTES.HOME) {
+      return ROUTES.HOME;
+    }
+    return activeHref;
+  };
+
+  const currentActive = getActiveHref();
+  const isActive = (href: string) => href === currentActive;
+
   return (
-    <header
-      className={`w-full transition-all duration-300 z-40 ${scrolled
-        ? "sticky top-0 bg-white/95 backdrop-blur-md shadow-sm py-2.5 border-b border-neutral-100"
-        : "bg-transparent py-4 md:py-6"
-        }`}
-    >
+    <header className="w-full bg-white/95 backdrop-blur-md sticky top-0 z-40 py-3 sm:py-3.5 border-b border-neutral-100/80 transition-all">
       <div className="max-w-[1300px] mx-auto flex items-center justify-between gap-4 px-4 sm:px-6 md:px-8">
         {/* NAS Infotech Brand Logo */}
         <Link
           href={ROUTES.HOME}
+          onClick={() => setActiveHref(ROUTES.HOME)}
           className="flex items-center gap-2.5 cursor-pointer select-none shrink-0 group"
           aria-label="NAS Infotech"
         >
@@ -71,31 +72,37 @@ export const Navbar: React.FC<NavbarProps> = () => {
           </div>
         </Link>
 
-        {/* Center Desktop Navigation Menu with PillNav Animation */}
+        {/* Center Desktop Navigation Menu - Single Active Pill */}
         <nav aria-label="Main" className="hidden lg:flex items-center">
-          <PillNav
-            items={navItems}
-            activeHref={activeHref}
-            linkComponent={Link}
-            itemStyle="pill"
-            hoverEffect="fill"
-            indicator="dot"
-            surface="glass"
-            size="md"
-            theme="light"
-            highlightColor="#0b3b24"
-            highlightTextColor="#ffffff"
-            bounce={0.3}
-            stretch={0.5}
-            collapse="never"
-            intro
-          />
+          <div className="flex items-center gap-1.5 p-1.5 rounded-full bg-neutral-100/80 backdrop-blur-md border border-neutral-200/60 shadow-xs">
+            {HEADER_NAV_ITEMS.map((item) => {
+              const active = isActive(item.href);
+              return (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  onClick={() => setActiveHref(item.href)}
+                  className={`relative inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer ${
+                    active
+                      ? "bg-[#0b3b24] text-white shadow-sm"
+                      : "text-neutral-600 hover:text-[#0b3b24] hover:bg-neutral-200/60"
+                  }`}
+                >
+                  {active && (
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
+                  )}
+                  <span>{item.label}</span>
+                </Link>
+              );
+            })}
+          </div>
         </nav>
 
         {/* Right CTA Button & Mobile Toggle */}
         <div className="flex items-center gap-3">
           <Link
             href={ROUTES.CONTACT}
+            onClick={() => setActiveHref(ROUTES.CONTACT)}
             className="inline-flex items-center gap-2.5 py-2 pl-4 pr-2 rounded-full bg-[#0b3b24] hover:bg-[#072a1a] text-white text-xs font-bold transition-all shadow-sm group"
           >
             <span>Contact</span>
@@ -161,26 +168,37 @@ export const Navbar: React.FC<NavbarProps> = () => {
       {mobileMenuOpen && (
         <div className="lg:hidden fixed inset-x-0 top-[65px] bg-white border-b border-neutral-200 px-6 py-6 shadow-2xl z-50 animate-in slide-in-from-top duration-200">
           <nav className="flex flex-col gap-2">
-            {navItems.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href || "/"}
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  if (item.href?.includes("#")) {
-                    setCurrentHash(item.href.replace("/", ""));
-                  }
-                }}
-                className="py-2.5 px-4 rounded-xl text-sm font-semibold text-neutral-800 hover:text-[#0b3b24] hover:bg-[#dcfce7] transition-colors"
-              >
-                {item.label}
-              </Link>
-            ))}
+            {HEADER_NAV_ITEMS.map((item) => {
+              const active = isActive(item.href);
+              return (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  onClick={() => {
+                    setActiveHref(item.href);
+                    setMobileMenuOpen(false);
+                  }}
+                  className={`py-2.5 px-4 rounded-xl text-sm font-semibold transition-colors flex items-center justify-between ${
+                    active
+                      ? "bg-[#0b3b24] text-white"
+                      : "text-neutral-800 hover:text-[#0b3b24] hover:bg-[#dcfce7]"
+                  }`}
+                >
+                  <span>{item.label}</span>
+                  {active && (
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                  )}
+                </Link>
+              );
+            })}
           </nav>
           <div className="mt-6 pt-4 border-t border-neutral-100 flex flex-col gap-3">
             <Link
               href={ROUTES.CONTACT}
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={() => {
+                setActiveHref(ROUTES.CONTACT);
+                setMobileMenuOpen(false);
+              }}
               className="w-full text-center py-3 rounded-full bg-[#0b3b24] text-white font-bold text-xs shadow-md"
             >
               Get Free Quote
