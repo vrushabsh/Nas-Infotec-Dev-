@@ -14,7 +14,7 @@ export interface HeaderNavItem {
 export const HEADER_NAV_ITEMS: HeaderNavItem[] = [
   { label: "Home", href: ROUTES.HOME },
   { label: "About Us", href: ROUTES.ABOUT },
-  { label: "Services", href: ROUTES.SERVICES_SECTION },
+  { label: "Services", href: ROUTES.SERVICES },
   { label: "Industries", href: ROUTES.INDUSTRIES },
   { label: "Careers", href: ROUTES.CAREERS },
 ];
@@ -22,7 +22,7 @@ export const HEADER_NAV_ITEMS: HeaderNavItem[] = [
 export const MAIN_NAV_ITEMS: NavItem[] = [
   { name: "Home", href: ROUTES.HOME },
   { name: "About Us", href: ROUTES.ABOUT },
-  { name: "Services", href: ROUTES.SERVICES_SECTION, hasDropdown: true },
+  { name: "Services", href: ROUTES.SERVICES, hasDropdown: true },
   { name: "Industries", href: ROUTES.INDUSTRIES },
   { name: "Technologies", href: "/#technologies" },
   { name: "Case Studies", href: ROUTES.WORK },
@@ -40,12 +40,27 @@ export const FOOTER_QUICK_LINKS: NavItem[] = [
 ];
 
 export const FOOTER_SERVICE_LINKS: NavItem[] = [
-  { name: "Software Development", href: ROUTES.SERVICES },
-  { name: "Artificial Intelligence & ML", href: ROUTES.SERVICES },
-  { name: "Web Development", href: ROUTES.SERVICES },
-  { name: "Salesforce Services", href: ROUTES.SERVICES },
-  { name: "BI & Big Data Analytics", href: ROUTES.SERVICES },
-  { name: "DevOps & Cloud Infra", href: ROUTES.SERVICES },
+  { name: "Software Development", href: "/services/software-development" },
+  {
+    name: "Artificial Intelligence & ML",
+    href: "/services/artificial-intelligence-machine-learning",
+  },
+  {
+    name: "Professional Web Development",
+    href: "/services/professional-web-development",
+  },
+  {
+    name: "Software Testing & QA",
+    href: "/services/software-testing-quality-assurance",
+  },
+  {
+    name: "DevOps Consulting & Automation",
+    href: "/services/devops-consulting-automation",
+  },
+  {
+    name: "Cybersecurity & InfoSec",
+    href: "/services/cybersecurity-information-security",
+  },
 ];
 
 export const FOOTER_CUSTOMER_LINKS: NavItem[] = [

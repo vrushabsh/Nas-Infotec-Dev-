@@ -12,26 +12,40 @@ interface FormData {
   message: string;
 }
 
-export const ContactUs: React.FC = () => {
-  const [formData, setFormData] = useState<FormData>({
-    firstName: "",
-    lastName: "",
-    phone: "",
-    email: "",
-    projectType: "Cloud Architecture",
-    message: "",
-  });
+export interface ContactUsProps {
+  id?: string;
+  title?: React.ReactNode;
+  subtitle?: string;
+  projectTypes?: string[];
+  defaultProjectType?: string;
+  className?: string;
+}
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-
-  const projectTypes = [
+export const ContactUs: React.FC<ContactUsProps> = ({
+  id = "contact",
+  title,
+  subtitle,
+  projectTypes = [
     "Cloud Architecture",
     "AI / ML Solutions",
     "Custom Software",
     "DevOps Automation",
     "Staff Augmentation",
-  ];
+  ],
+  defaultProjectType,
+  className = "",
+}) => {
+  const [formData, setFormData] = useState<FormData>({
+    firstName: "",
+    lastName: "",
+    phone: "",
+    email: "",
+    projectType: defaultProjectType || projectTypes[0] || "Cloud Architecture",
+    message: "",
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -66,8 +80,8 @@ export const ContactUs: React.FC = () => {
 
   return (
     <section
-      id="contact"
-      className="w-full relative min-h-[800px] flex items-center bg-[#0a1b10] overflow-hidden py-20 lg:py-28 font-sans mb-10"
+      id={id}
+      className={`w-full relative min-h-[800px] flex items-center bg-[#0a1b10] overflow-hidden py-20 lg:py-28 font-sans mb-10 ${className}`}
     >
       <span id="careers" className="absolute -top-20" />
       {/* Background Cover Image with Gradient Overlay */}
@@ -90,16 +104,21 @@ export const ContactUs: React.FC = () => {
           {/* Left Column: Information & Trust */}
           <div className="lg:col-span-6 space-y-8">
             <div className="space-y-4">
-              <h2 className="text-3xl sm:text-5xl md:text-5xl font-black text-white leading-[1.12] tracking-tight">
-                Let&apos;s Build Your Next{" "}
-                <span className="text-[#FFB057]">
-                  Architectural Breakthrough
-                </span>
-                .
+              <h2 className="text-3xl sm:text-5xl md:text-[50px] font-bold text-white leading-[1.08] tracking-[-0.03em]">
+                {title || (
+                  <>
+                    Let&apos;s Build Your Next{" "}
+                    <span className="text-[#FFB057]">
+                      Architectural Breakthrough
+                    </span>
+                    .
+                  </>
+                )}
               </h2>
 
               <p className="text-gray-300 text-sm sm:text-base leading-relaxed font-medium max-w-lg">
-                Connect directly with our lead technical architects. We analyze your tech stack, identify performance bottlenecks, and deliver an actionable execution blueprint within 24 hours.
+                {subtitle ||
+                  "Connect directly with our lead technical architects. We analyze your tech stack, identify performance bottlenecks, and deliver an actionable execution blueprint within 24 hours."}
               </p>
             </div>
 
