@@ -21,11 +21,7 @@ export default function ContactPage() {
   return (
     <main className="min-h-screen bg-white flex flex-col font-sans text-[#0a1118]">
       {/* Top Navbar */}
-      <div className="border-b border-neutral-100 bg-white sticky top-0 z-40 backdrop-blur-md">
-        <Container size="wide">
-          <Navbar accent={accent} />
-        </Container>
-      </div>
+      <Navbar />
 
       {/* 1. HERO SECTION WITH BACKGROUND IMAGE & BREADCRUMB */}
       <section className="relative w-full h-[360px] sm:h-[440px] md:h-[480px] overflow-hidden flex items-center justify-center">

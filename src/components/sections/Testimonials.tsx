@@ -299,11 +299,10 @@ export const Testimonials: React.FC<TestimonialsProps> = ({
                       setSelectedPartner(isSelected ? null : tab.name)
                     }
                     style={isSelected ? { borderColor: accent } : undefined}
-                    className={`flex-1 min-w-[260px] max-w-[380px] flex items-center justify-between gap-3 p-4 sm:p-5 rounded-[20px] border transition-all text-left cursor-pointer ${
-                      isSelected
-                        ? "bg-white/15 ring-2 ring-[#FFB057]/40 border-[#FFB057]"
-                        : "border-white/10 bg-white/5 hover:border-white/20 hover:bg-white/10"
-                    }`}
+                    className={`flex-1 min-w-[260px] max-w-[380px] flex items-center justify-between gap-3 p-4 sm:p-5 rounded-[20px] border transition-all text-left cursor-pointer ${isSelected
+                      ? "bg-white/15 ring-2 ring-[#FFB057]/40 border-[#FFB057]"
+                      : "border-white/10 bg-white/5 hover:border-white/20 hover:bg-white/10"
+                      }`}
                   >
                     <span className="inline-flex items-center gap-2 text-sm sm:text-[15px] font-bold text-white">
                       <span className="w-4 h-4 rounded-md bg-[#0f7b44] inline-block shadow-sm" />
@@ -362,25 +361,44 @@ export const Testimonials: React.FC<TestimonialsProps> = ({
             </div>
           </div>
 
-          {/* Light Logos Row */}
+          {/* Light Logos Row - Infinite Carousel */}
           {showLogos && (
-            <div className="pt-8 sm:pt-10 [mask-image:linear-gradient(90deg,transparent,#000_6%,#000_94%,transparent)] border-t border-white/10">
-              <div className="flex flex-wrap items-center justify-between gap-6 sm:gap-9">
-                {IMAGES.clients.map((client) => (
-                  <div
-                    key={client.name}
-                    className="h-8 w-28 relative flex items-center justify-center opacity-75 hover:opacity-100 transition-opacity"
-                    title={client.name}
-                  >
-                    <Image
-                      src={client.src}
-                      alt={client.name}
-                      width={112}
-                      height={32}
-                      className="max-h-8 max-w-full object-contain filter invert"
-                    />
-                  </div>
-                ))}
+            <div className="pt-8 sm:pt-10 border-t border-white/10 overflow-hidden relative [mask-image:linear-gradient(90deg,transparent,#000_8%,#000_92%,transparent)]">
+              <div className="animate-marquee flex items-center">
+                <div className="flex items-center gap-10 sm:gap-14 pr-10 sm:pr-14 shrink-0">
+                  {IMAGES.clients.map((client) => (
+                    <div
+                      key={client.name}
+                      className="h-[52px] w-36 relative flex items-center justify-center opacity-75 hover:opacity-100 transition-opacity shrink-0"
+                      title={client.name}
+                    >
+                      <Image
+                        src={client.src}
+                        alt={client.name}
+                        width={144}
+                        height={52}
+                        className="max-h-[52px] max-w-full object-contain filter invert"
+                      />
+                    </div>
+                  ))}
+                </div>
+                <div className="flex items-center gap-10 sm:gap-14 pr-10 sm:pr-14 shrink-0" aria-hidden="true">
+                  {IMAGES.clients.map((client) => (
+                    <div
+                      key={`dup-${client.name}`}
+                      className="h-[52px] w-36 relative flex items-center justify-center opacity-75 hover:opacity-100 transition-opacity shrink-0"
+                      title={client.name}
+                    >
+                      <Image
+                        src={client.src}
+                        alt={client.name}
+                        width={144}
+                        height={52}
+                        className="max-h-[52px] max-w-full object-contain filter invert"
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           )}

@@ -15,7 +15,7 @@ export const Hero: React.FC<HeroProps> = () => {
   const [videoOpen, setVideoOpen] = useState(false);
 
   return (
-    <section className="relative bg-white overflow-hidden pt-1 pb-10 sm:pb-14">
+    <section className="relative bg-white overflow-hidden pb-10 sm:pb-14">
       {/* Ambient luminous mint/emerald radial glow backdrops */}
       <div className="absolute top-0 right-0 w-[620px] h-[550px] bg-gradient-to-bl from-emerald-100/70 via-emerald-50/25 to-transparent blur-3xl pointer-events-none -z-0" />
       <div className="absolute bottom-10 left-0 w-[500px] h-[450px] bg-gradient-to-tr from-emerald-100/60 via-emerald-50/20 to-transparent blur-3xl pointer-events-none -z-0" />

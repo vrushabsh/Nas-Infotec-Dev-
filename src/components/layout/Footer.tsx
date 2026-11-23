@@ -42,7 +42,7 @@ export const Footer: React.FC<FooterProps> = ({
             <span className="text-xs text-emerald-400 tracking-wider uppercase font-bold">
               Got an IT Challenge? Partner With Experts
             </span>
-            <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-[60px] font-bold leading-[1.02] tracking-[-0.04em]">
+            <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-[40px] font-bold leading-[1.02] tracking-[-0.04em]">
               Innovating Since 2020
             </h2>
           </div>
@@ -220,9 +220,9 @@ export const Footer: React.FC<FooterProps> = ({
                 className="object-contain object-left max-h-full w-auto"
               />
             </div>
-            <span className="text-[10px] leading-relaxed text-slate-400 max-w-[200px] hidden sm:block">
+            {/* <span className="text-[10px] leading-relaxed text-slate-400 max-w-[200px] hidden sm:block">
               {SITE_CONFIG.slogan}
-            </span>
+            </span> */}
           </div>
 
           <div className="flex flex-wrap gap-5 text-[10px] text-slate-400">

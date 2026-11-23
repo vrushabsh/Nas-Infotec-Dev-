@@ -22,7 +22,7 @@ export const Process: React.FC<ProcessProps> = ({
       subtitle: "Discovery & Scope",
       description:
         "We start with an in-depth architectural consultation to understand your business objectives, technical debt, and scalability challenges.",
-      image: "/About/how-work-image-1.jpg",
+      image: "/Consultation & Strategic Analysis.webp",
     },
     {
       id: 2,
@@ -30,7 +30,7 @@ export const Process: React.FC<ProcessProps> = ({
       subtitle: "System Blueprints",
       description:
         "Our principal architects design a detailed blueprint and data model ensuring cloud-native resilience, modularity, and high throughput.",
-      image: "/About/how-work-image-2.jpg",
+      image: "/Solution Architecture & Design.webp",
     },
     {
       id: 3,
@@ -38,7 +38,7 @@ export const Process: React.FC<ProcessProps> = ({
       subtitle: "Sprint Delivery",
       description:
         "Using agile methodologies, we engineer your product with continuous stakeholder feedback, rapid increments, and clean code standards.",
-      image: "/About/how-work-image-3.jpg",
+      image: "/Iterative Agile Development.webp",
     },
     {
       id: 4,
@@ -46,7 +46,7 @@ export const Process: React.FC<ProcessProps> = ({
       subtitle: "Zero Defects",
       description:
         "Comprehensive automated integration testing, penetration scans, and load testing guarantee reliability and enterprise compliance.",
-      image: "/About/approach-image-3.jpg",
+      image: "/Rigorous Testing & Security QA.webp",
     },
     {
       id: 5,
@@ -54,7 +54,7 @@ export const Process: React.FC<ProcessProps> = ({
       subtitle: "Production Scale",
       description:
         "Automated CI/CD pipelines transition code safely to live clusters, backed by 24/7/365 telemetry monitoring and strict SLA response times.",
-      image: "/About/approach-image-2.jpg",
+      image: "/Cloud Deployment & 247 SLA Support.webp",
     },
   ];
 
